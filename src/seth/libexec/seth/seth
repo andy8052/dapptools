@@ -60,7 +60,8 @@ V,value=number       amount (in wei) of ETH to send
 S,password=file      password for non-interactive signing
 
   Options for seth-call(1):
-B,block=number       block number (default: \`latest')
+B,block-from=number       block number (default: \`earliest')
+T,block-to=number         block number (default: \`latest')
 
   Options for seth-send(1):
 create               use the calldata to create a new object
@@ -109,7 +110,8 @@ while [[ $1 ]]; do
 
     -C|--chain)      shift; export SETH_CHAIN=$1;;
 
-    -B|--block)      shift; export ETH_BLOCK=$1;;
+    -B|--block-from) shift; export ETH_BLOCK_FROM=$1;;
+    -T|--block-to)   shift; export ETH_BLOCK_TO=$1;;
     -F|--from)       shift; export ETH_FROM=$1;;
     -G|--gas)        shift; export ETH_GAS=$1;;
     -P|--gas-price)  shift; export ETH_GAS_PRICE=$1;;
