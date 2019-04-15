@@ -6,12 +6,12 @@ set -e
 }
 params=(
   "module=logs" "action=getLogs"
-  "address=$1" "fromBlock=$2" "toBlock=$3"
+  "address=$1" "fromBlock=$2" "toBlock=$5"
   "apikey=$ETHERSCAN_API_KEY"
 )
-[[ "$4" ]] && params[6]="topic0=$4"
-[[ "$5" ]] && params[7]="topic0_1_opr=and"
-[[ "$5" ]] && params[8]="topic1=$ilk"
+[[ "$3" ]] && params[6]="topic0=$3"
+[[ "$4" ]] && params[7]="topic0_1_opr=and"
+[[ "$4" ]] && params[8]="topic1=$ilk"
 query=$(printf "&%s" "${params[@]}")
 response=$(seth curl "${ETHERSCAN_API_URL?}""${query/&/?}")
 message=$(jshon <<<"$response" -e message -u)
